@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Updates</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #166d25;
+    padding: 10px 20px;
+    color: white;
+}
+
+.nav-left h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.nav-right .dashboard-button {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.nav-right .dashboard-button:hover {
+    background-color: white;
+    color: #166d25;
+    transform: scale(1.05);
+}
+
+.header {
+    background-color: #166d25;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.header p {
+    margin: 10px 0 0;
+}
+
+.news-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.news-item {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.news-item h2 {
+    font-size: 1.2em;
+    margin: 0 0 10px;
+}
+
+.news-item p {
+    margin: 0 0 15px;
+}
+
+.news-item a {
+    color: #166d25;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <h2>Farmify</h2>
+        </div>
+        <div class="nav-right">
+            <a href="consumer.html" class="dashboard-button">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="header">
+        <h1>Latest Updates for Consumers</h1>
+        <p>Stay informed with the latest schemes, initiatives, and news.</p>
+    </header>
+
+    <!-- News Section -->
+    <section class="news-container">
+        <article class="news-item">
+            <h2>PM Kisan Samman Nidhi (PM-KISAN)</h2>
+            <p>Provides ₹6,000 annually to small and marginal farmers in three installments to support their agricultural expenses and enhance their livelihoods.</p>
+            <a href="https://pmkisan.gov.in/" target="_blank">Learn more</a>
+        </article>
+
+        <article class="news-item">
+            <h2>Pradhan Mantri Fasal Bima Yojana (PMFBY)</h2>
+            <p>Offers crop insurance to protect farmers from losses due to adverse weather and other unforeseen events, ensuring financial security.</p>
+            <a href="https://pmfby.gov.in/" target="_blank">Learn more</a>
+        </article>
+
+        <article class="news-item">
+            <h2>e-NAM (Electronic National Agriculture Market)</h2>
+            <p>Integrates over 1,361 mandis into a national electronic platform to improve market access and price realization for farmers.</p>
+            <a href="https://www.enam.gov.in/web/" target="_blank">Learn more</a>
+        </article>
+
+        <article class="news-item">
+            <h2>Public-Private Partnerships for Post-Harvest Losses</h2>
+            <p>Focuses on reducing post-harvest losses by enhancing storage facilities and infrastructure through public-private partnerships.</p>
+            <a href="https://www.niti.gov.in/" target="_blank">Learn more</a>
+        </article>
+
+        <article class="news-item">
+            <h2>Atmanirbhar Oil Seeds Abhiyan</h2>
+            <p>Aims to boost self-sufficiency in edible oils by promoting the cultivation of indigenous oilseeds like groundnut and mustard.</p>
+            <a href="https://nfsm.gov.in/" target="_blank">Learn more</a>
+        </article>
+
+        <article class="news-item">
+            <h2>Comprehensive Dairy Development Program</h2>
+            <p>Allocates funds for dairy sector development, including processing, breed multiplication, and animal feed production to enhance productivity and incomes for dairy farmers.</p>
+            <a href="https://dahd.nic.in/" target="_blank">Learn more</a>
+        </article>
+
+        <article class="news-item">
+            <h2>Agricultural Technology Initiatives</h2>
+            <p>Implements schemes like ATMA and NMAET to improve technology dissemination, farm practices, and extension services through the use of ICT.</p>
+            <a href="https://agricoop.nic.in/" target="_blank">Learn more</a>
+        </article>
+
+        <article class="news-item">
+            <h2>National Mission for Sustainable Agriculture (NMSA)</h2>
+            <p>Focuses on sustainable agriculture practices by promoting efficient water use, soil health management, and resource conservation.</p>
+            <a href="https://nmsa.dac.gov.in/" target="_blank">Learn more</a>
+        </article>
+
+        <article class="news-item">
+            <h2>Kisan Call Centers (KCC)</h2>
+            <p>Provides real-time agricultural advice to farmers in their local languages through a network of call centers across the country.</p>
+            <a href="https://mkisan.gov.in/" target="_blank">Learn more</a>
+        </article>
+
+        <article class="news-item">
+            <h2>m-Kisan Portal</h2>
+            <p>A digital platform where farmers receive timely information on weather forecasts, market prices, and agricultural practices in their local languages.</p>
+            <a href="https://mkisan.gov.in/" target="_blank">Learn more</a>
+        </article>
+
+        <article class="news-item">
+            <h2>Agriculture Infrastructure Fund</h2>
+            <p>A ₹1 lakh crore fund to support the development of agricultural infrastructure, including cold storage, warehousing, and other post-harvest management facilities, enhancing farmers' income and reducing wastage.</p>
+            <a href="https://agriinfra.dac.gov.in/" target="_blank">Learn more</a>
+        </article>
+
+        <article class="news-item">
+            <h2>Soil Health Card Scheme</h2>
+            <p>Distributes soil health cards to farmers to provide them with information on soil quality and nutrient status, enabling them to use fertilizers more efficiently and improve crop yields.</p>
+            <a href="https://soilhealth.dac.gov.in/" target="_blank">Learn more</a>
+        </article>
+
+        <article class="news-item">
+            <h2>Farmer Field Schools (FFS)</h2>
+            <p>An educational initiative where farmers learn through field observation and experimentation to improve their pest management and crop cultivation practices.</p>
+            <a href="https://icar.org.in/" target="_blank">Learn more</a>
+        </article>
+
+        <article class="news-item">
+            <h2>National Mission on Agricultural Extension and Technology (NMAET)</h2>
+            <p>A comprehensive mission that includes sub-missions for agricultural extension, seed and planting material, mechanization, and plant protection.</p>
+            <a href="https://agricoop.nic.in/" target="_blank">Learn more</a>
+        </article>
+    </section>
+</body>
+</html>

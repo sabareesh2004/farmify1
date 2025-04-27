@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Order Summary</title>
+    <link rel="stylesheet" href="checkout.css">
+    <style>
+      /* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* Page Title */
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #166d25;
+    margin-bottom: 20px;
+}
+
+/* Order Summary Section */
+#order-summary {
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.order-item:hover {
+    transform: translateY(-3px);
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    background-color: #166d25;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #135c1e;
+}
+
+/* Wallet and Payment Sections */
+.wallet-section, .payment-section {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+}
+
+.wallet-balance {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Total Price */
+.total-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #166d25;
+}
+
+/* Secured Payment and Refund Policy Section */
+.security-info {
+    background-color: #e8f5e9;
+    padding: 25px;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+}
+
+.security-info h3 {
+    color: #166d25;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.security-info p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .order-item, .wallet-section, .payment-section, .security-info {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <h1>Order Summary</h1>
+
+    <!-- Order Summary Section -->
+    <div id="order-summary">
+        <!-- Items will be displayed here -->
+    </div>
+
+    <!-- Wallet Section -->
+    <div class="wallet-section">
+        <h2>Wallet</h2>
+        <div class="wallet-balance">Wallet Balance: ₹<span id="wallet-balance">100</span></div>
+        <button onclick="addFunds()">Add Funds</button>
+    </div>
+
+    <!-- Payment Section -->
+    <div class="payment-section">
+        <h2>Payment</h2>
+        <p class="total-price">Total: ₹<span id="total-price">0</span></p>
+        <button onclick="payWithWallet()">Pay with Wallet</button>
+        <button onclick="payWithCard()">Pay with Card</button>
+    </div>
+
+    <!-- Secured Payment and Refund Policy Section -->
+    <div class="security-info">
+        <h3>Secured Payment and Refund Policy</h3>
+        <p>We ensure your transactions are secure with top-notch encryption technologies and secure payment gateways. Your data is safe with us, and we never store sensitive payment details.</p>
+        <p>If you are not satisfied with your purchase, our refund policy allows you to request a refund within 14 days of the transaction, subject to our terms and conditions. For more information on our refund policy, please contact our customer service team.</p>
+    </div>
+
+    <script>
+        // Fetch cart items from local storage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let walletBalance = parseFloat(localStorage.getItem('walletBalance')) || 100; // Starting wallet balance
+        let totalPrice = 0;
+
+        // Display cart items in the order summary
+        function displayCartItems() {
+            const orderSummary = document.getElementById('order-summary');
+            const totalPriceElement = document.getElementById('total-price');
+
+            if (cart.length === 0) {
+                orderSummary.innerHTML = '<p>Your cart is empty.</p>';
+                totalPriceElement.textContent = '0';
+                return;
+            }
+
+            // Calculate total price and generate HTML for each cart item
+            totalPrice = cart.reduce((acc, item) => acc + item.price, 0);
+            totalPriceElement.textContent = totalPrice.toFixed(2);
+
+            orderSummary.innerHTML = cart.map((item, index) => `
+                <div class="order-item">
+                    <span>${item.name} - ₹${item.price.toFixed(2)}</span>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                </div>
+            `).join('');
+        }
+
+        // Remove item from the cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCartItems();
+        }
+
+        // Display wallet balance
+        function displayWalletBalance() {
+            document.getElementById('wallet-balance').textContent = walletBalance.toFixed(2);
+        }
+
+        // Add funds to the wallet
+        function addFunds() {
+            let funds = parseFloat(prompt('Enter the amount to add to your wallet:'));
+            if (isNaN(funds) || funds <= 0) {
+                alert('Please enter a valid amount.');
+                return;
+            }
+            walletBalance += funds;
+            localStorage.setItem('walletBalance', walletBalance);
+            displayWalletBalance();
+        }
+
+        // Pay with wallet function
+        function payWithWallet() {
+            if (totalPrice > walletBalance) {
+                alert('Insufficient funds in the wallet.');
+                return;
+            }
+            walletBalance -= totalPrice;
+            localStorage.setItem('walletBalance', walletBalance);
+            alert('Payment successful using wallet!');
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCartItems();
+            displayWalletBalance();
+        }
+
+        // Simulate pay with card
+        function payWithCard() {
+            alert('Payment successful using card!');
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCartItems();
+        }
+
+        // Initialize the page by displaying items and wallet balance
+        displayCartItems();
+        displayWalletBalance();
+    </script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> 
+    <title>Farmify - DMA</title>
+   <style>
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Navigation Bar Styling */
+.navbar {
+    background-color: #166d25; /* Dark Green */
+    color: #ffffff;
+    padding: 15px 20px;
+    /*margin-top: 20px;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #145d22; /* Slightly darker green border */
+}
+
+.navbar .logo a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding-right: 25px;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 50px;
+}
+
+.nav-links a {
+    color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            border-radius: 5px;
+}
+
+.nav-links a:hover {
+    background-color: #144d1a; /* Slightly darker shade for hover effect */
+            transform: scale(1.05);
+}
+
+/* Main Content Styling */
+main {
+    margin-top: 80px; /* Space for fixed navbar */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Hero Section Styling */
+.hero {
+    background-color: #166d25; /* Dark Green */
+    color: #ffffff;
+    padding: 80px 20px; 
+    border-radius: 10px;
+    margin-bottom: 40px; /* Increased bottom margin */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.cta-button {
+    background-color: #145d22; /* Slightly darker green */
+    color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: inline-block; 
+    margin-top: 20px; 
+}
+
+.cta-button:hover {
+    background-color: #0f4d1a; /* Even darker green for hover effect */
+}
+
+/* Features Section Styling */
+#features {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#features h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: #166d25; /* Dark Green */
+}
+
+.feature-item {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.feature-item h3 {
+    font-size: 1.5rem;
+    color: #166d25; /* Dark Green */
+}
+
+.feature-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Testimonials Section Styling */
+#testimonials {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#testimonials h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: #166d25; /* Dark Green */
+}
+
+.testimonial-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-item p {
+    font-size: 1rem;
+    color: #333;
+   
+}
+
+.testimonial-item span {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #166d25; /* Dark Green */
+    color: #ffffff;
+    text-align: center;
+    padding: 15px 0;
+    position: static;
+    width: 100%;
+    bottom: 0;
+    border-top: 2px solid #145d22; /* Slightly darker green border */
+}
+
+
+   </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo-title">
+                <div class="logo">
+                    <!--<i class="fas fa-tractor"></i> --> 
+                </div>
+                <div class="title">Farmify</div>
+            </div>
+            <div id="google_element"></div>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-sign-out-alt"></i>Home</a></li>
+                
+                <li><a href="https://www.accuweather.com/en/in/indore/204411/weather-forecast/204411"><i class="fas fa-cloud-sun"></i> Weather</a></li>
+               
+                
+                
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="hero">
+            <h1>Welcome to Farmify</h1>
+            <p>Connecting Farmers Directly to the Market</p>
+            <a href="#contact" class="cta-button">Contact Us</a>
+        </section>
+
+        <section id="features">
+            <h2>Our Key Features</h2>
+            <div class="feature-item">
+                <h3>Easy Market Access</h3>
+                <p>Seamlessly connect with multiple markets to sell your produce efficiently.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Competitive Pricing</h3>
+                <p>Get the best prices for your produce by comparing market rates.</p>
+            </div>
+            <div class="feature-item">
+                <h3>24/7 Support</h3>
+                <p>Our support team is available round the clock to assist you with any issues.</p>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <h2>What Our Users Say</h2>
+            <div class="testimonial-item">
+                <p>"Farmify has transformed the way I sell my produce. The process is smooth and the prices are great!"</p>
+                <span>- Hritik jaiswal</span>
+            </div>
+           
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Farmify | All Rights Reserved</p>
+    </footer>
+    <script src="https://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate">
+    </script>
+    <script>
+        function loadGoogleTranslate() {
+            new google.translate.TranslateElement("google_element");
+        }
+    </script>
+</body>
+</html>
