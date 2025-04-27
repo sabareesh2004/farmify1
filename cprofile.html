@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> <!-- Font Awesome Icons -->
+    <style>
+        /* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body styling */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Navigation bar styling */
+.navbar {
+    background-color: #166d25; /* Dark green color */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Left side title and logo */
+.navbar .logo-title {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo {
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.navbar .logo i {
+    color: #166d25;
+    font-size: 20px;
+}
+
+.navbar .title {
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Dashboard Link */
+.navbar .nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.navbar .nav-link i {
+    margin-right: 8px; /* Space between icon and text */
+    font-size: 20px;
+}
+
+.navbar .nav-link:hover {
+    color: #a0d6a3; /* Light green color on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Main content styling */
+.content {
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.content h1 {
+    color: #166d25;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.profile-details {
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+    border-radius: 15px;
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.profile-details img {
+    width: 100px; /* Reduced size */
+    height: 100px; /* Reduced size */
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.profile-details h2 {
+    color: #166d25;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.profile-details p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.upload-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.upload-section input[type="file"] {
+    display: none;
+}
+
+.upload-section label {
+    display: inline-block;
+    padding: 10px;
+    background-color: #166d25;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+}
+
+.upload-section label:hover {
+    background-color: #0d4f1a; /* Darker green on hover */
+}
+
+/* Edit Form Styling */
+.edit-form {
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+    border-radius: 15px;
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+    text-align: center;
+
+}
+.edit-form h2 {
+    margin-bottom: 20px;
+}
+.edit-form input,
+.edit-form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.edit-form button {
+    background-color: #166d25;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.edit-form button:hover {
+    background-color: #0d4f1a; /* Darker green on hover */
+}
+
+/* Additional Styling */
+.edit-button {
+    background-color: #166d25;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.edit-button:hover {
+    background-color: #0d4f1a; /* Darker green on hover */
+}
+
+.msg h3 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo-title">
+            <div class="logo">
+                <i class="fas fa-user"></i> <!-- User icon for profile -->
+            </div>
+            <div class="title">My Profile</div>
+        </div>
+        <a href="consumer.html" class="nav-link">
+            <i class="fas fa-tachometer-alt"></i> <!-- Dashboard icon -->
+            Dashboard
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Profile Page</h1>
+        <p>Here are some details about me.</p>
+    </div>
+
+        <!-- Profile Details Section -->
+        <div class="profile-details">
+           
+            <div class="upload-section">
+                <div><img src="farm.jpg" alt="Profile Picture" id="profilePicture"> <!-- Profile picture --></div>
+                
+                <input type="file" id="fileInput" accept="image/*">
+                <label for="fileInput">
+                    Change Profile Photo
+                </label>
+            </div>
+            <h2 id="profileName">John Doe</h2> <!-- Replace with actual name -->
+            <p><strong>Email:</strong> <span id="profileEmail">john.doe@example.com</span></p> <!-- Replace with actual email -->
+            <p><strong>Phone:</strong> <span id="profilePhone"> (123) 456-7890</span></p> <!-- Replace with actual phone number -->
+            <p><strong>Bio:</strong> <span id="profileBio">I am a passionate farmer dedicated to improving agricultural practices and sharing knowledge. My interests include sustainable farming, crop management, and farm technology.</span></p> <!-- Replace with actual bio -->
+            <p><strong>Location:</strong> <span id="profileLocation">Green Valley, Country</span></p> <!-- Replace with actual location -->
+
+            <!-- Upload Section -->
+           
+
+            <!-- Edit Profile Button -->
+            
+        </div>
+
+        <div class="msg"><h3>If you want to edit the profile details you can change below</h3></div>
+
+        <!-- Edit Form Section -->
+        <div class="edit-form" id="editForm">
+            <h2>Edit Profile</h2>
+            <input type="text" id="editName" placeholder="Name">
+            <input type="email" id="editEmail" placeholder="Email">
+            <input type="tel" id="editPhone" placeholder="Phone Number">
+            <textarea id="editBio" rows="4" placeholder="Bio"></textarea>
+            <input type="text" id="editLocation" placeholder="Location">
+            <button onclick="saveProfile()">Save</button>
+        </div>
+    
+    <script>
+        // JavaScript to handle the profile picture change
+document.getElementById('fileInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('profilePicture').src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// JavaScript to handle profile editing
+function saveProfile() {
+    const name = document.getElementById('editName').value;
+    const email = document.getElementById('editEmail').value;
+    const phone = document.getElementById('editPhone').value;
+    const bio = document.getElementById('editBio').value;
+    const location = document.getElementById('editLocation').value;
+
+    if (name) localStorage.setItem('profileName', name);
+    if (email) localStorage.setItem('profileEmail', email);
+    if (phone) localStorage.setItem('profilePhone', phone);
+    if (bio) localStorage.setItem('profileBio', bio);
+    if (location) localStorage.setItem('profileLocation', location);
+
+    // Update profile details
+    document.getElementById('profileName').innerText = localStorage.getItem('profileName') || 'John Doe';
+    document.getElementById('profileEmail').innerText = localStorage.getItem('profileEmail') || 'john.doe@example.com';
+    document.getElementById('profilePhone').innerText = localStorage.getItem('profilePhone') || '(123) 456-7890';
+    document.getElementById('profileBio').innerText = localStorage.getItem('profileBio') || 'I am a passionate farmer dedicated to improving agricultural practices and sharing knowledge. My interests include sustainable farming, crop management, and farm technology.';
+    document.getElementById('profileLocation').innerText = localStorage.getItem('profileLocation') || 'Green Valley, Country';
+
+    // Hide the edit form after saving
+    toggleEditForm();
+}
+
+// Function to toggle the edit form
+function toggleEditForm() {
+    const form = document.getElementById('editForm');
+    form.style.display = form.style.display === 'none' || form.style.display === '' ? 'block' : 'none';
+}
+
+// Initialize profile with saved data
+window.onload = function() {
+    document.getElementById('profileName').innerText = localStorage.getItem('profileName') || 'John Doe';
+    document.getElementById('profileEmail').innerText = localStorage.getItem('profileEmail') || 'john.doe@example.com';
+    document.getElementById('profilePhone').innerText = localStorage.getItem('profilePhone') || '(123) 456-7890';
+    document.getElementById('profileBio').innerText = localStorage.getItem('profileBio') || 'I am a passionate farmer dedicated to improving agricultural practices and sharing knowledge. My interests include sustainable farming, crop management, and farm technology.';
+    document.getElementById('profileLocation').innerText = localStorage.getItem('profileLocation') || 'Green Valley, Country';
+}
+
+    </script>
+</body>
+</html>

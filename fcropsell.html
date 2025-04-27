@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell your crops</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> <!-- Font Awesome Icons -->
+    <style>
+        /* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body styling */
+body {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Navigation bar styling */
+.navbar {
+    background-color: #166d25; /* Dark green color */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Left side title and logo */
+.navbar .logo-title {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo {
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.navbar .logo i {
+    color: #166d25;
+    font-size: 20px;
+}
+
+.navbar .title {
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* Navigation link styling */
+.navbar .nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.navbar .nav-link i {
+    margin-right: 8px; /* Space between icon and text */
+    font-size: 20px;
+}
+
+.navbar .nav-link:hover {
+    color: #a0d6a3; /* Light green color on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
+}
+
+/* Main content styling */
+.content {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Header styling */
+.content h1 {
+    color: #166d25;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Catalog Section */
+.catalog {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    justify-content: center;
+}
+
+.product {
+    background: rgba(255, 255, 255, 0.9); /* Light background */
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product img {
+    width: 100%;
+    height: 60%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.product h2 {
+    color: #166d25;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.product p {
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.product .price {
+    font-weight: bold;
+    color: #166d25;
+    margin-bottom: 15px;
+}
+
+.product button {
+    background-color: #166d25;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.product button:hover {
+    background-color: #0d4f1a; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Cart Section */
+.cart {
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.9); /* Light background */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cart h2 {
+    color: #166d25;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.cart ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.cart ul li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart ul li button {
+    background-color: #e74c3c; /* Red color for delete */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cart ul li button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.cart #totalPrice {
+    font-size: 20px;
+    font-weight: bold;
+    color: #166d25;
+    margin-bottom: 20px;
+}
+
+.cart .checkout-btn {
+    background-color: #166d25;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cart .checkout-btn:hover {
+    background-color: #0d4f1a; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.catalog .product .wheat, .catalog .product .rice, .corn, .tomatoes {
+    width: 100%;
+    height: 270px;
+}
+
+.catalog .product .onions, .catalog .product .watermelon, .catalog .product .grapes, .catalog .product .papaya {
+    width: 100%;
+    height: 270px;
+}
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .catalog {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .catalog {
+        grid-template-columns: 1fr;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo-title">
+            <div class="logo">
+                <i class="fas fa-leaf"></i> <!-- Leaf icon for crops -->
+            </div>
+            <div class="title">Crops</div>
+        </div>
+        <a href="sell.html" class="nav-link">
+            <i class="fas fa-arrow-left"></i> <!-- Back icon -->
+            Back to Sell
+        </a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Sell Your crops</h1>
+        <p>Select from our wide range of crops:</p>
+
+        <!-- Crop Catalog -->
+        <div class="catalog">
+            <div class="product">
+                <img src="wheat1.jpg" alt="Wheat" class="wheat">
+                <h2>Wheat</h2>
+                <p>wheat seeds.</p>
+                <p class="price">₹2,300 per 100kg</p>
+                <button onclick="addToCart('Wheat', 2300)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="rice.jpg" alt="Rice" class="rice">
+                <h2>Rice</h2>
+                <p>Rice for your farm.</p>
+                <p class="price">₹1,100 per 25kg</p>
+                <button onclick="addToCart('Rice', 1100)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="maze.jpg.jpg" alt="Corn" class="corn">
+                <h2>Corn</h2>
+                <p>Corn seeds for your farm.</p>
+                <p class="price">₹800 per 25kg</p>
+                <button onclick="addToCart('Corn', 800)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="onions.jpg" alt="Onions" class="onions">
+                <h2>Onions</h2>
+                <p>Fresh onions for your farm.</p>
+                <p class="price">₹1,500 per 100kg</p>
+                <button onclick="addToCart('Onions', 1500)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="mustard.jpg" alt="Mustard">
+                <h2>Mustard</h2>
+                <p>High-quality mustard seeds.</p>
+                <p class="price">$15.00 per kg</p>
+                <button onclick="addToCart('Mustard', 15)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="garlic.jpg.jpg" alt="Garlic">
+                <h2>Garlic</h2>
+                <p>Premium garlic seeds for better yield.</p>
+                <p class="price">₹4,500 per 100kg</p>
+                <button onclick="addToCart('Garlic', 4500)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="chilly.jpg" alt="Chilli">
+                <h2>Chilli</h2>
+                <p>Spicy chilli seeds.</p>
+                <p class="price">₹1,350 per 25kg</p>
+                <button onclick="addToCart('Chilli', 1350)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="potato.jpg" alt="Potato">
+                <h2>Potato</h2>
+                <p>High-yield potato seeds.</p>
+                <p class="price">₹1,250 per 100kg</p>
+                <button onclick="addToCart('Potato', 1250)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="tomatos.jpg" alt="Tomatoes" class="tomatoes">
+                <h2>Tomatoes</h2>
+                <p>Tomatoes for your farm</p>
+                <p class="price">₹375 per 25kg</p>
+                <button onclick="addToCart('Tomatoes', 375)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="peanuts.jpg" alt="Peanuts">
+                <h2>Peanuts</h2>
+                <p>Quality peanuts for a good harvest.</p>
+                <p class="price">$30.00 per kg</p>
+                <button onclick="addToCart('Peanuts', 30)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="cabbage.jpg" alt="Cabbage">
+                <h2>Cabbage</h2>
+                <p>Fresh cabbage seeds for your farm.</p>
+                <p class="price">₹300 per 25kg</p>
+                <button onclick="addToCart('Cabbage', 300)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="barley.jpg" alt="Barley">
+                <h2>Barley</h2>
+                <p>Nutritious barley seeds.</p>
+                <p class="price">₹2,200 per 100kg</p>
+                <button onclick="addToCart('Barley', 2200)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="jute.jpg" alt="Jute">
+                <h2>Jute</h2>
+                <p>Durable jute seeds.</p>
+                <p class="price">₹2,250 per 25kg</p>
+                <button onclick="addToCart('Jute', 2250)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="apple.jpg" alt="Apple">
+                <h2>Apple</h2>
+                <p>Sweet apple seeds.</p>
+                <p class="price">$40.00 per kg</p>
+                <button onclick="addToCart('Apple', 40)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="mango.jpg" alt="Mango">
+                <h2>Mango</h2>
+                <p>Delicious mango seeds.</p>
+                <p class="price">$45.00 per kg</p>
+                <button onclick="addToCart('Mango', 45)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="papaya.jpg" alt="Papaya" class="papaya">
+                <h2>Papaya</h2>
+                <p>High-quality papaya seeds.</p>
+                <p class="price">₹500 per 25kg</p>
+                <button onclick="addToCart('Papaya', 500)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="watermelon.jpg" alt="Watermelon" class="watermelon">
+                <h2>Watermelon</h2>
+                <p>Juicy watermelon seeds.</p>
+                <p class="price">₹600 per 25kg</p>
+                <button onclick="addToCart('Watermelon', 600)">Publish to sell</button>
+            </div>
+            <div class="product">
+                <img src="grapes.jpg" alt="Grapes" class="grapes">
+                <h2>Grapes</h2>
+                <p>Sweet grapes seeds.</p>
+                <p class="price">₹1,250 per 25kg</p>
+                <button onclick="addToCart('Grapes', 1250)">Publish to sell</button>
+            </div>
+        </div>
+
+        <!-- Cart Section -->
+        <div class="cart">
+            <h2>Your Publish to sell Cart</h2>
+            <ul id="cartItems">
+                <!-- Cart items will be displayed here -->
+            </ul>
+            <p id="totalPrice">Total Price: ₹0</p>
+            <button onclick="window.location.href='checkout.html'" class="checkout-btn">Checkout</button>
+        </div>
+    </div>
+
+    <script>
+               // JavaScript for adding and removing items from the cart
+
+let cart = [];
+const cartItemsElement = document.getElementById('cartItems');
+const totalPriceElement = document.getElementById('totalPrice');
+
+function addToCart(name, price) {
+    // Add item to cart
+    cart.push({ name, price });
+    
+    // Update cart display
+    updateCart();
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+        alert(`${itemName} added to cart.`);
+}
+
+function updateCart() {
+    cartItemsElement.innerHTML = ''; // Clear previous items
+    let totalPrice = 0;
+
+    cart.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `${item.name} - ₹${item.price.toFixed(2)} <button onclick="removeFromCart(${index})">Remove</button>`;
+        cartItemsElement.appendChild(li);
+        totalPrice += item.price;
+    });
+
+    totalPriceElement.textContent = `Total Price: ₹${totalPrice.toFixed(2)}`;
+}
+
+function removeFromCart(index) {
+    // Remove item from cart
+    cart.splice(index, 1);
+    
+    // Update cart display
+    updateCart();
+}
+
+    </script>
+</body>
+</html>

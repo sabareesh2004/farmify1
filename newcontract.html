@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Contract</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
+    <style>
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #dfffe7, #e6f7e6);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #166d25;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 4px solid #145d20;
+    animation: header-animate 1s ease-out;
+}
+
+header p {
+    font-size: 16px;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+@keyframes header-animate {
+    0% { transform: translateY(-20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.contract-form {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15px);
+    animation: form-animate 0.8s ease-out;
+}
+
+@keyframes form-animate {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.form-group {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 18px;
+    color: #166d25;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+label i {
+    margin-right: 10px;
+    font-size: 22px;
+}
+
+input, select, textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #166d25;
+    box-shadow: 0 0 8px rgba(22, 109, 37, 0.4);
+    outline: none;
+}
+
+.terms {
+    display: flex;
+    align-items: center;
+}
+
+.submit-btn {
+    background-color: #166d25;
+    color: white;
+    padding: 15px 25px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.submit-btn i {
+    margin-right: 12px;
+}
+
+.submit-btn:hover {
+    background-color: #145d20;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #166d25;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    font-size: 14px;
+}
+
+footer i {
+    color: #ff6f61;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Create Your New Contract</h1>
+        <p>Ensure a stable and secure farming future with tailored contracts.</p>
+    </header>
+
+    <section class="contract-form">
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="farmerName"><i class="fas fa-user"></i> Farmer's Name</label>
+                <input type="text" id="farmerName" name="farmerName" placeholder="Enter farmer's name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contractType"><i class="fas fa-file-contract"></i> Contract Type</label>
+                <select id="contractType" name="contractType" required>
+                    <option value="">Select Contract Type</option>
+                    <option value="purchase">Purchase Agreement</option>
+                    <option value="lease">Lease Agreement</option>
+                    <option value="partnership">Partnership Agreement</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="startDate"><i class="fas fa-calendar-alt"></i> Start Date</label>
+                <input type="date" id="startDate" name="startDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="endDate"><i class="fas fa-calendar-alt"></i> End Date</label>
+                <input type="date" id="endDate" name="endDate" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description"><i class="fas fa-align-left"></i> Description</label>
+                <textarea id="description" name="description" placeholder="Enter contract description" rows="4"></textarea>
+            </div>
+
+            <div class="form-group terms">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms"> I agree to the terms and conditions</label>
+            </div>
+
+            <button type="submit" class="submit-btn"><i class="fas fa-file-signature"></i> Create Contract</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Farmify. All rights reserved. Crafted with <i class="fas fa-heart"></i> for our farmers.</p>
+    </footer>
+</body>
+</html>

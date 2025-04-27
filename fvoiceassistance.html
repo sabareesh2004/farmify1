@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Assistant - Farmify</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Basic styles for the body */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: #166d25;
+            color: white;
+            padding: 10px 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header .nav-item {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .header .nav-item:hover {
+            color: #0f4c1a;
+        }
+
+        /* Introduction Section */
+        .introduction {
+            max-width: 800px;
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .introduction h1 {
+            color: #166d25;
+        }
+
+        .introduction p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+
+        /* Voice Assistant Button */
+        .voice-assistant-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #166d25;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .voice-assistant-btn:hover {
+            background-color: #0f4c1a;
+        }
+
+        .voice-assistant-btn img {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">Farmify</div>
+        <a href="farmer.html" class="nav-item">Dashboard</a>
+    </header>
+
+    <!-- Introduction Section -->
+    <section class="introduction">
+        <h1>Welcome to Farmify Voice Assistant</h1>
+        <p>
+            Our Voice Assistant is designed to make your experience on Farmify smoother and more interactive. 
+            With just a few voice commands, you can navigate through different sections, check updates, 
+            access your profile, and more—all without lifting a finger!
+        </p>
+        <p>
+            To get started, simply click on the microphone button at the bottom right corner of the screen. 
+            You can say commands like "Go to profile," "Check updates," or "Open dashboard" to quickly access 
+            different parts of the website. We aim to provide farmers with a user-friendly, hands-free experience 
+            that brings convenience and accessibility to all.
+        </p>
+        <p>
+            Explore the possibilities with our Voice Assistant and make your Farmify experience truly hands-free!
+        </p>
+    </section>
+
+    <!-- Voice Assistant Button -->
+    <button id="voice-assistant" class="voice-assistant-btn">
+        <i class="fas fa-microphone" style="color: #f4f4f4;"></i>
+    </button>
+
+    <script>
+        // Check if the browser supports the Web Speech API
+        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition();
+
+            // Set recognition settings
+            recognition.lang = 'en-US'; // Set language
+            recognition.interimResults = false; // Get only final results
+            recognition.maxAlternatives = 1;
+
+            // Start recognition when the button is clicked
+            const voiceButton = document.getElementById('voice-assistant');
+            voiceButton.addEventListener('click', () => {
+                recognition.start();
+            });
+
+            // Handle speech recognition results
+            recognition.addEventListener('result', (event) => {
+                const transcript = event.results[0][0].transcript.toLowerCase();
+                console.log('You said:', transcript);
+
+                // Perform actions based on recognized commands
+                if (transcript.includes('profile')) {
+                    window.location.href = 'fprofile.html';
+                } else if (transcript.includes('buy')) {
+                    window.location.href = 'buy.html';
+                }  else if (transcript.includes('sell')) {
+                    window.location.href = 'sell.html';
+                } else if (transcript.includes('weather')) {
+                    window.location.href = 'weather.html';
+                }  else if (transcript.includes('dashboard')) {
+                    window.location.href = 'farmer.html';
+                } 
+                else if (transcript.includes('contacts')) {
+                    window.location.href = 'contact.html';
+                } else if (transcript.includes('update') || transcript.includes('news')) {
+                    window.location.href = 'fupdate.html';
+                }
+                else {
+                    alert('Command not recognized. Please try again.');
+                } 
+            });
+
+            // Error handling
+            recognition.addEventListener('error', (event) => {
+                console.error('Speech recognition error:', event.error);
+                alert('Sorry, I did not catch that. Please try again.');
+            });
+        } else {
+            alert('Sorry, your browser does not support the Web Speech API.');
+        }
+    </script>
+
+</body>
+</html>

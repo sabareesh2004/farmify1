@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> <!-- Font Awesome Icons -->
+    <title>Farmify - DMA</title>
+    <style>
+        /* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Navigation Bar Styling */
+.navbar {
+    background-color: #166d25; /* Dark Green */
+    color: #ffffff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #145d22; /* Slightly darker green border */
+}
+
+.navbar .logo a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-right: 40px;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content Styling */
+main {
+    margin-top: 80px; /* Space for fixed navbar */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Selection Section Styling */
+.selection {
+    padding: 240px 20px;
+}
+
+.selection h1 {
+    font-size: 2.5rem;
+    color: #166d25; /* Dark Green */
+    margin-bottom: 30px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between buttons */
+}
+
+.role-button {
+    background-color: #166d25; /* Dark Green */
+    color: #ffffff;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.role-button:hover {
+    background-color: #145d22; /* Slightly darker green */
+}
+
+.help .about h1 {
+    margin-top: 0px;
+    
+}
+.help .about a {
+    margin-top: 10px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #166d25; /* Dark Green */
+    color: #ffffff;
+    text-align: center;
+    padding: 5px 0;
+    position: static;
+    width: 100%;
+    bottom: 0;
+    border-top: 2px solid #145d22; /* Slightly darker green border */
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#">Farmify</a>
+            </div>
+           
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="selection">
+            <h1>Choose Your Role</h1>
+            <div class="button-container">
+                <a href="flogin.html" class="role-button">Farmer</a>
+                <a href="clogin.html" class="role-button">Consumer</a>
+            </div>
+        </section>
+        
+        <section class="help">
+            <div class="about">
+                <h1>If you want to know more about our website then click the about button below.</h1>
+                <a href="about.html" class="role-button">About / Help</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Farmify | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
